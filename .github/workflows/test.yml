@@ -48,5 +48,7 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
+          context: ./newt
           image: ${{ matrix.image }}
           push: "false"
+          version: "dev"
