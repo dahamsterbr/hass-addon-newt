@@ -23,12 +23,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Lowercase registry prefix
+        id: registry
+        run: echo "prefix=ghcr.io/$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
       - name: Get build matrix
         id: matrix
         uses: home-assistant/builder/actions/prepare-multi-arch-matrix@2026.06.0
         with:
           architectures: ${{ env.ARCHITECTURES }}
           image-name: ${{ env.IMAGE_NAME }}
+          registry-prefix: ${{ steps.registry.outputs.prefix }}
 
   build:
     name: Build ${{ matrix.arch }} image
