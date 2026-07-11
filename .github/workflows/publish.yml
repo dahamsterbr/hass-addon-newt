@@ -17,8 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+      registry-prefix: ${{ steps.registry.outputs.prefix }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Lowercase registry prefix
+        id: registry
+        run: echo "prefix=ghcr.io/$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       - name: Get build matrix
         id: matrix
@@ -26,6 +31,7 @@ jobs:
         with:
           architectures: ${{ env.ARCHITECTURES }}
           image-name: ${{ env.IMAGE_NAME }}
+          registry-prefix: ${{ steps.registry.outputs.prefix }}
 
   build:
     name: Build ${{ matrix.arch }} image
@@ -73,3 +79,4 @@ jobs:
           image-tags: |
             ${{ github.event.release.tag_name }}
             latest
+          registry-prefix: ${{ needs.init.outputs.registry-prefix }}
