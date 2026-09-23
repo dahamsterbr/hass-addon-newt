@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.16.0 - 2026-08-21]
 - Newt version bumped to 1.16.0
 
+## [1.17.0 - 2026-09-23]
+- Newt version bumped to 1.17.0
+
 ## [1.15.0 - 2026-07-24]
 - Newt version bumped to 1.15.0
 
