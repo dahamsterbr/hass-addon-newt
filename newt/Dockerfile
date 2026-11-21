@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.source=https://github.com/dahamsterbr/hass-addon-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
-ARG NEWT_VERSION="1.20.0"
+ARG NEWT_VERSION="1.20.1"
 ARG BUILD_ARCH
 RUN \
     if [ "$BUILD_ARCH" = "aarch64" ]; then \

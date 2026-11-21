@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.20.1 - 2026-11-22]
+- Newt version bumped to 1.20.1
+- Add --local-endpoints to list IPs for local connections to try
+- Fix keep the physical socket receive routine alive after read errors top prevent disconnections on MacOS
+- Fix ICMP echo replies for alias resources to come from the pinged address
+- Fix turn off gVisor's RACK which stalls downloads after packet loss (enable again with --enable-tcp-rack)
+- Fix telemetry not enableable on CLI
+
 ## [1.20.0 - 2026-11-09]
 - Newt version bumped to 1.20.0
 - 1.26 brings better resource session management for admins, SSH logs, and auto-updates for the Windows client
